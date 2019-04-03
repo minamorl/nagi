@@ -1,7 +1,8 @@
 #include<iostream>
+#include<boost/version.hpp>
 
 int main() {
-  std::cout << "ok" << std::endl;
+  std::cout << BOOST_VERSION << std::endl;
 
   return 0;
 }
