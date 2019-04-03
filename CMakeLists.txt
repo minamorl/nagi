@@ -9,10 +9,15 @@ find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(Boost 1.69 REQUIRED)
 
+add_subdirectory(src)
+
 add_executable(main
   app/main.cpp
   )
 
+target_link_libraries(main nagi)
+
 target_include_directories(main PRIVATE ${Boost_INCLUDE_DIRS})
+
 target_compile_features(main PRIVATE cxx_std_17)
 set_target_properties(main PROPERTIES CXX_EXTENSIONS OFF)
