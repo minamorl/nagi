@@ -1,5 +1,5 @@
 add_library(nagi
-  hello.cpp
+  server.cpp
   )
 
 target_include_directories(nagi

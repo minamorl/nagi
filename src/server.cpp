@@ -4,7 +4,7 @@
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 
-#include "nagi/hello.hpp"
+#include "nagi/server.hpp"
 
 namespace nagi {
 

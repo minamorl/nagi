@@ -2,7 +2,7 @@
 #include <boost/asio.hpp>
 #include <string>
 
-#include "nagi/hello.hpp"
+#include "nagi/server.hpp"
 
 int main() {
   using namespace std::string_literals;
