@@ -1,7 +1,10 @@
 #pragma once
 
+#include <string>
+#include <iostream>
+
 namespace nagi {
 
-void hello(std::string s);
+void hello(const std::string& s);
 
 } // nagi

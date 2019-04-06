@@ -4,7 +4,7 @@
 
 namespace nagi {
 
-void hello(std::string s) {
+void hello(const std::string& s) {
   std::cout << s << std::endl;
 }
 
