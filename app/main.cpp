@@ -5,10 +5,14 @@
 #include "nagi/server.hpp"
 
 int main() {
-  using namespace std::string_literals;
-  boost::asio::io_service io_service;
-  nagi::server server(io_service, 30000);
-  server.start_accept();
-  io_service.run();
+    try {
+        boost::asio::io_context io_context;
+        nagi::server server(io_context, 30000);
+        server.start_accept();
+        io_context.run();
+    }
+    catch (std::exception& e) {
+       std::cerr << e.what() << std::endl;
+    }
   return 0;
 }

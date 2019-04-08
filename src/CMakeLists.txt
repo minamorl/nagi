@@ -1,5 +1,6 @@
 add_library(nagi
   server.cpp
+  tcp_connection.cpp
   )
 
 target_include_directories(nagi
