@@ -1,6 +1,7 @@
 add_library(nagi
   server.cpp
   tcp_connection.cpp
+  hpack/constants.cpp
   )
 
 target_include_directories(nagi
