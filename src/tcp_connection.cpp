@@ -9,13 +9,12 @@
 namespace nagi {
 
 using pointer = boost::shared_ptr<tcp_connection>;
-using boost::asio::ip::tcp;
 
 pointer tcp_connection::create(boost::asio::io_context& io_context) {
     return pointer(new tcp_connection(io_context));
 }
 
-tcp::socket& tcp_connection::socket() {
+boost::asio::ip::tcp::socket& tcp_connection::socket() {
     return socket_;
 }
 

@@ -9,12 +9,9 @@
 
 namespace nagi {
 
-namespace asio = boost::asio;
-using asio::ip::tcp;
-
-server::server(asio::io_context& io_context, int port)
+server::server(boost::asio::io_context& io_context, int port)
     : io_context_(io_context),
-      acceptor_(io_context, tcp::endpoint(tcp::v4(), port)),
+      acceptor_(io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)),
       port_(port) {}
 
 void server::start_accept()
@@ -25,7 +22,7 @@ void server::start_accept()
     acceptor_.async_accept(
       new_connection->socket(),
       boost::bind(&server::on_accept, this, new_connection, 
-        asio::placeholders::error)
+        boost::asio::placeholders::error)
     );
 }
 

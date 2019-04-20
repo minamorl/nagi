@@ -3,9 +3,10 @@
 #include <map>
 #include <vector>
 
-namespace nagi { namespace hpack {
+namespace nagi::hpack {
 
-const std::vector<std::pair<std::string, std::string>> STATIC_TABLE {
+const std::vector<std::pair<std::string, std::string>> constants::STATIC_TABLE {
+    {"", ""},
     {":authority", ""},
     {":method", "GET"},
     {":method", "POST"},
@@ -328,4 +329,4 @@ const std::vector<std::pair<uint32_t, uint8_t>> constants::HUFFMAN_CODE_TABLE {
     {0x3fffffff, 30},
 };
 
-}} // nagi
+} // nagi::hpack

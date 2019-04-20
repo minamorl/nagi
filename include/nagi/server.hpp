@@ -8,19 +8,17 @@
 
 namespace nagi {
 
-namespace asio = boost::asio;
-using asio::ip::tcp;
-
 class server {
-    asio::io_context& io_context_;
-    tcp::acceptor acceptor_;
+    boost::asio::io_context& io_context_;
+    boost::asio::ip::tcp::acceptor acceptor_;
     int port_;
 
 public:
-    server(asio::io_context& io_context, int port);
+    server(boost::asio::io_context& io_context, int port);
     void start_accept();
 private:
     void on_accept(tcp_connection::pointer new_connection,
         const boost::system::error_code& error);
 };
+
 } // nagi

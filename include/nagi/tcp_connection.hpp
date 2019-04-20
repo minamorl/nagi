@@ -7,19 +7,17 @@
 
 namespace nagi {
 
-using boost::asio::ip::tcp;
-
 class tcp_connection
     : public boost::enable_shared_from_this<tcp_connection> {
 
-tcp::socket socket_;
+boost::asio::ip::tcp::socket socket_;
 std::string message_;
 
 public:
     using pointer = boost::shared_ptr<tcp_connection>;
 
     static pointer create(boost::asio::io_context& io_context);
-    tcp::socket& socket();
+    boost::asio::ip::tcp::socket& socket();
     void start();
 private:
     tcp_connection(boost::asio::io_context& io_context);
