@@ -33,7 +33,7 @@ std::string huffman::decode(bytes str) {
     
     int i = 0;
     int current_huffman_length = 0;
-    while (i < str.size()) {
+    while (i < str.size() * 8 /* bit length */) {
         auto fi = std::find_if(std::begin(constants::HUFFMAN_CODE_TABLE), std::end(constants::HUFFMAN_CODE_TABLE), [&] (auto& x) {
             current_huffman_length = x.second;
             return x.first == convert_bits_to_int(str, i, x.second);
