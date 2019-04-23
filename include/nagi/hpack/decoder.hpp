@@ -5,9 +5,11 @@
 
 namespace nagi::hpack {
 
+using bytes = std::vector<uint8_t>;
+
 class huffman {
 public:
-    std::vector<std::string> decode(std::vector<uint8_t>);
+    std::string decode(bytes str);
 };
 
 } // nagi::hpack

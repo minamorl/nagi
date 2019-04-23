@@ -1,12 +1,12 @@
 #include <bitset>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
 #include <nagi/hpack/decoder.hpp>
 #include <nagi/hpack/constants.hpp>
 
 namespace nagi::hpack {
-
-using bytes = std::vector<uint8_t>;
 
 uint32_t convert_bits_to_int(bytes const& s, int const& first, int const& length) {
     uint32_t result = 0;
@@ -27,13 +27,25 @@ uint32_t convert_bits_to_int(bytes const& s, int const& first, int const& length
     
     return result;
 }
-// std::string huffman::decode(bytes str) {
-//     // constants::HUFFMAN_CODE_TABLE;
-//     std::string result;
-//     for (auto&& x : str) {
-        
-//     }
-//     return result;
-// }
+
+std::string huffman::decode(bytes str) {
+    std::string result;
+    
+    int i = 0;
+    int current_huffman_length = 0;
+    while (i < str.size()) {
+        auto fi = std::find_if(std::begin(constants::HUFFMAN_CODE_TABLE), std::end(constants::HUFFMAN_CODE_TABLE), [&] (auto& x) {
+            current_huffman_length = x.second;
+            return x.first == convert_bits_to_int(str, i, x.second);
+        });
+        if (fi != std::end(constants::HUFFMAN_CODE_TABLE)) {
+            i += current_huffman_length;
+            result.push_back(static_cast<char>(fi->first));
+        } else {
+            throw std::runtime_error("Invalid huffman-encoded value are passed");
+        }
+    }
+    return result;
+}
 
 } // nagi::hpack
